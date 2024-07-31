@@ -1,0 +1,2 @@
+fasthtml-hf
+python-fasthtml
