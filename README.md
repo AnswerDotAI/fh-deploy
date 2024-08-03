@@ -1,6 +1,6 @@
 # fh-deploy
 
-This repo contains deployment guides for the platforms listed below.
+This repo contains deployment guides for the platforms listed below. Each guide contains a "hello world" style project which you'll setup on your local device before deploying it on the platform.
 
 | Platform                               | Deployment Guide                                                         |
 |----------------------------------------|--------------------------------------------------------------------------|
@@ -13,4 +13,4 @@ If you would like to add a guide for another platform feel free to fork this rep
 
 ### Platform Agnostic Deployment
 - [Uvicorn](https://www.uvicorn.org/) is the server used to run FastHTML apps. For general info on uvicorn deployments see this [guide](https://www.uvicorn.org/deployment/). 
-- The Apache HTTP Server doesn't support ASGI deployments, which includes FastHTML. We suggest running [uvicorn behind nginx](https://www.uvicorn.org/deployment/#running-behind-nginx) instead.
+- The Apache HTTP Server doesn't support ASGI deployments, which includes FastHTML. We suggest running [uvicorn behind nginx](https://www.uvicorn.org/deployment/#running-behind-nginx) or [Caddy](https://caddyserver.com/) instead.
