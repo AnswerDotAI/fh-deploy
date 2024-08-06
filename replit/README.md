@@ -40,10 +40,6 @@ Deployment on Replit is straightforward and can be done in a few steps:
 4. Configure your deployment settings, including environment variables if needed.
 5. Review and confirm your deployment configuration.
 
-<div align="center">
-   <img src="https://github.com/user-attachments/assets/8e1ba8df-cbfc-4c7f-bb75-f6cf015bc0dd" width="75%"/>
-</div>
-
 Important notes:
 - You'll need to add a payment method to deploy your app.
 - Additional options can be configured in the `.replit` file present in your project, note that you may have to reveal hidden files if you can't see it. For more information on configuring the `.replit` file, refer to the [docs](https://docs.replit.com/programming-ide/configuring-repl).
