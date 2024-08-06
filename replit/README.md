@@ -1,9 +1,16 @@
 # Building and deploying on Replit
 
+<div align="center">
+   <img src="https://github.com/user-attachments/assets/c838618a-992c-4d9a-84ae-cbb9b7d37a4e" width="15%"/>
+</div>
 
 
 Replit is a cloud-based development and deployment platform that allows you to build and deploy in a single, integrated environment.
 It comes with handy tools, like [secrets management](https://docs.replit.com/programming-ide/storing-sensitive-information-environment-variables) and [AI assisted coding](https://docs.replit.com/programming-ide/ai-code-completion), and supports _any_ language you can think of. Replit also has cloud services like [object storage](https://docs.replit.com/storage/replit-database), [embedded Postgres](https://docs.replit.com/hosting/databases/postgresql-database), and [key-value databases](https://docs.replit.com/hosting/databases/replit-database) that make it easy to build and ship apps. For a 1-minute overview of Replit, see [this video](https://www.youtube.com/watch?v=TiHq41h3nDo).
+
+<div align="center">
+   <img src="https://github.com/user-attachments/assets/dd50c381-4319-4960-87da-b5b5566b49c3" width="75%"/>
+</div>
 
 ## Setup
 
@@ -17,6 +24,10 @@ A web view pane will open up with your application. Simply edit the code in the 
 
 **An important note:** because Replit is a cloud-based editor, the [development URL](https://docs.replit.com/additional-resources/add-a-made-with-replit-badge-to-your-webview#what-is-the-webview) is accessible from any device (while your Repl is running). That means you can test your app out on desktop and mobile simultaneously.
 
+<div align="center">
+   <img src="https://github.com/user-attachments/assets/85141ad6-aec9-4d75-ab2a-47cb25a4ca22" width="75%"/>
+</div>
+
 ## Deployment
 
 Deployment on Replit is straightforward and can be done in a few steps:
@@ -29,15 +40,14 @@ Deployment on Replit is straightforward and can be done in a few steps:
 4. Configure your deployment settings, including environment variables if needed.
 5. Review and confirm your deployment configuration.
 
+<div align="center">
+   <img src="https://github.com/user-attachments/assets/8e1ba8df-cbfc-4c7f-bb75-f6cf015bc0dd" width="75%"/>
+</div>
+
 Important notes:
 - You'll need to add a payment method to deploy your app.
-- Ensure your `main.py` file contains the correct entry point for your application.
-- For production deployments, it's recommended to set up a custom domain (configurable in deployment settings).
-- Additional options can be configured in the `.replit` file present in your project, note that you may have to reveal hidden files if you can't see it. For more information on configuring the `.replit` file, refer to the [official Replit documentation](https://docs.replit.com/programming-ide/configuring-repl).
-
-For detailed instructions and advanced configuration options, refer to the [official Replit deployment documentation](https://docs.replit.com/hosting/deployments/about-deployments).
-
-To learn more about Replit deployments, read on [here](https://docs.replit.com/hosting/deployments/about-deployments).
+- Additional options can be configured in the `.replit` file present in your project, note that you may have to reveal hidden files if you can't see it. For more information on configuring the `.replit` file, refer to the [docs](https://docs.replit.com/programming-ide/configuring-repl).
+- For detailed instructions and advanced configuration options, refer to the [official Replit deployment documentation](https://docs.replit.com/hosting/deployments/about-deployments).
 
 For a sample Replit app that makes use of the key-value database, go [here](https://replit.com/@matt/FastHTML-guestbook?v=1#README.md) or check out the live version [here](https://guestbook.mattpalmer.io) and follow the same instructions.
 
