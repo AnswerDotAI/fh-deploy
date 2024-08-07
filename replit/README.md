@@ -20,7 +20,7 @@ To get started on Replit, follow these steps:
 2. Fork this Replit [template](https://replit.com/@tommyccollins/fasthtml-replit), which contains the same code in this folder.
 3. To run the app click `Run` in the nav bar.
 
-A web view pane will open up with your application. Simply edit the code in the editor to see changes in real time.
+A web view pane will open up with your application. Edit the code in the editor to see changes in real time.
 
 **An important note:** because Replit is a cloud-based editor, the [development URL](https://docs.replit.com/additional-resources/add-a-made-with-replit-badge-to-your-webview#what-is-the-webview) is accessible from any device (while your Repl is running). That means you can test your app out on desktop and mobile simultaneously.
 
