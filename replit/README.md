@@ -9,7 +9,7 @@ Replit is a cloud-based development and deployment platform that allows you to b
 It comes with tools like [secrets management](https://docs.replit.com/programming-ide/storing-sensitive-information-environment-variables) and [AI assisted coding](https://docs.replit.com/programming-ide/ai-code-completion), and has good Python, JS, HTML, and CSS support for FastHTML apps. Replit also has cloud services like [object storage](https://docs.replit.com/storage/replit-database), [embedded Postgres](https://docs.replit.com/hosting/databases/postgresql-database), and [key-value databases](https://docs.replit.com/hosting/databases/replit-database).
 
 <div align="center">
-   <img src="https://github.com/user-attachments/assets/dd50c381-4319-4960-87da-b5b5566b49c3" width="75%"/>
+   <img src="https://github.com/user-attachments/assets/562c06ad-8407-4d4a-b91e-c94e06471e11" width="75%"/>
 </div>
 
 ## Setup
