@@ -6,7 +6,7 @@
 
 
 Replit is a cloud-based development and deployment platform that allows you to build and deploy in a single, integrated environment.
-It comes with handy tools, like [secrets management](https://docs.replit.com/programming-ide/storing-sensitive-information-environment-variables) and [AI assisted coding](https://docs.replit.com/programming-ide/ai-code-completion), and supports _any_ language you can think of. Replit also has cloud services like [object storage](https://docs.replit.com/storage/replit-database), [embedded Postgres](https://docs.replit.com/hosting/databases/postgresql-database), and [key-value databases](https://docs.replit.com/hosting/databases/replit-database) that make it easy to build and ship apps. For a 1-minute overview of Replit, see [this video](https://www.youtube.com/watch?v=TiHq41h3nDo).
+It comes with tools like [secrets management](https://docs.replit.com/programming-ide/storing-sensitive-information-environment-variables) and [AI assisted coding](https://docs.replit.com/programming-ide/ai-code-completion), and has good Python, JS, HTML, and CSS support for FastHTML apps. Replit also has cloud services like [object storage](https://docs.replit.com/storage/replit-database), [embedded Postgres](https://docs.replit.com/hosting/databases/postgresql-database), and [key-value databases](https://docs.replit.com/hosting/databases/replit-database).
 
 <div align="center">
    <img src="https://github.com/user-attachments/assets/dd50c381-4319-4960-87da-b5b5566b49c3" width="75%"/>
@@ -30,11 +30,11 @@ A web view pane will open up with your application. Edit the code in the editor 
 
 ## Deployment
 
-Deployment on Replit is straightforward and can be done in a few steps:
+Deployment on Replit can be done in a few steps:
 
 1. Click `Deploy` in the top navigation bar of your Repl.
 2. Choose a deployment type:
-   - For frontend apps, select "Autoscale" deployments. These are cost-effective and automatically scale based on traffic.
+   - For frontend apps, select "Autoscale" deployments. These automatically scale based on traffic.
    - For services requiring continuous execution (e.g., backends, APIs, bots), choose "Reserved VM" deployments.
 3. Select a custom subdomain for your app or use the auto-generated one.
 4. Configure your deployment settings, including environment variables if needed.
