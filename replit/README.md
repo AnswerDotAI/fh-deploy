@@ -14,7 +14,7 @@ It comes with handy tools, like [secrets management](https://docs.replit.com/pro
 
 ## Setup
 
-To get started on Replit, follow these easy steps:
+To get started on Replit, follow these steps:
 
 1. Create a Replit [account](https://replit.com/),
 2. Fork this Replit [template](https://replit.com/@tommyccollins/fasthtml-replit), which contains the same code in this folder.
