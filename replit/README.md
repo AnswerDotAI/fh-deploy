@@ -17,7 +17,7 @@ It comes with tools like [secrets management](https://docs.replit.com/programmin
 To get started on Replit, follow these steps:
 
 1. Create a Replit [account](https://replit.com/),
-2. Fork this Replit [template](https://replit.com/@tommyccollins/fasthtml-replit), which contains the same code in this folder.
+2. Fork this Replit [template](https://replit.com/@jh151/FastHTML?v=1), which contains the same code in this folder.
 3. To run the app click `Run` in the nav bar.
 
 A web view pane will open up with your application. Edit the code in the editor to see changes in real time.
