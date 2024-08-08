@@ -19,6 +19,7 @@ To get started on Replit, follow these steps:
 1. Create a Replit [account](https://replit.com/),
 2. Fork this Replit [template](https://replit.com/@jh151/FastHTML?v=1).
 3. To run the app click `Run` in the nav bar.
+4. Refresh the browser window (Replit will show errors in the file until this is done, since running the app installs the needed libraries, and Replit doesn't auto-refresh).
 
 A web view pane will open up with your application. Edit the code in the editor to see changes in real time.
 
