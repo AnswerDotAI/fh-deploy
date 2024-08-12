@@ -9,6 +9,7 @@ This repo contains deployment guides for the platforms listed below. Each guide 
 | [Replit](https://replit.com/)          | [guide](https://github.com/AnswerDotAI/fh-deploy/tree/main/replit)       |
 | [Vercel](https://vercel.com/)          | [guide](https://github.com/AnswerDotAI/fh-deploy/tree/main/vercel)       |
 | [Heroku](https://heroku.com/)          | [guide](https://github.com/AnswerDotAI/fh-deploy/tree/main/heroku)       |
+| [Coolify](https://coolify.io/)         | [guide](https://github.com/AnswerDotAI/fh-deploy/tree/main/coolify)      |
 
 If you would like to add a guide for another platform feel free to fork this repo and submit a PR.
 
