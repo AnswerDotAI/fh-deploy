@@ -109,8 +109,8 @@ sudo apt install -y build-essential libssl-dev libffi-dev python3-dev python3-se
 sudo apt install nginx
 ```
 
-If asked, reboot the server with `sudo reboot`
-
+- If asked, reboot the server with `sudo reboot`
+- If you navigate to `http://<DROPLET_IP_ADDRESS>` you should see "Welcome to nginx!" page.
 
 2. Clone the repository
 
@@ -118,52 +118,76 @@ If asked, reboot the server with `sudo reboot`
 mkdir project
 cd project
 python3 -m venv env
+source env/bin/activate
 git clone https://github.com/AnswerDotAI/fh-deploy.git
+git clone -b add_droplet https://github.com/fmussari/fh-deploy.git
 cd fh-deploy/droplet
 pip install -r requirements.txt
 ```
 
+#### Configuring Nginx
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-### Deploying to DigitalOcean's Droplet
-
-- create a Railway [account](https://railway.app/) and signup to the Hobby plan. 
-- install the Railway [CLI](https://docs.railway.app/guides/cli#installing-the-cli).
-- run `railway login` to log in to your Railway account.
-- run `fh_railway_deploy YOUR_APP_NAME`.
-
-⚠️ Your app's entry point must be located in a `main.py` file for this to work.
-
-### Supplementary Info.
-`fh_railway_deploy` runs the following commands behind the scenes for you:
-
-```bash
-railway init -n <app-name>
-railway up -c
-railway domain
-railway link ...
-railway volume add -m /app/data
+1. Create a file called `fasthtml` in the folder `/etc/nginx/sites-available`.
+   
+```commandline
+sudo nano /etc/nginx/sites-available/fasthtml
 ```
 
-It handles automatically linking your current app to a railway project, setting up all the environment variables such as the port to listen on and setting up a `requirements.txt` if you haven't one already.
+2. Add the following text to the file:
+```
+server {
+    server_name <DROPLET_IP_ADDRESS>;
+    location / {
+        include proxy_params;
+        proxy_pass http://127.0.0.1:8000;
+    }
+}
+```
 
-### Customizing your Domain Name
+3. Creates a symbolic link in Nginx to enable a the configuration file.
 
-Railway automatically assigns your website a unique domain name such as `quickdraw-production.up.railway.app`. However, if you want to use your own that you've purchased through services like [GoDaddy](https://www.godaddy.com/) or [Squarespace Domains](https://domains.squarespace.com/) and have users be able to navigate to your site using that domain, you'll need to configure it both in your domain registration service and in Railway. Railway has put together a nice tutorial for setting it up [here](https://docs.railway.app/guides/public-networking#custom-domains).
+```commandline
+sudo ln -s /etc/nginx/sites-available/fasthtml /etc/nginx/sites-enabled/
+```
 
-Make sure to notice the difference between setting up a regular domain and a subdomain. Regular domains don't have any prefixes before the main site name such as `example.com` and is setup differently from a subdomain which might look like `subdomain.example.com`. Make sure to follow your domain registration service's documentation on how to set these types up.
+To see the status of Nginx server run `systemctl status nginx.service`
+
+#### Install Gunicorn and test if it works
+```commandline
+pip install gunicorn
+gunicorn -w 4 -k uvicorn.workers.UvicornWorker main:app
+```
+You should now see:
+
+![](03_web.PNG)
+
+#### Run Gunicorn as a service
+
+1. Create a file called `fasthtml.service` in the folder `/etc/systemd/system`.
+   
+```commandline
+sudo nano /etc/systemd/system/fasthtml.service
+```
+
+2. Add the following text to the file:
+```
+[Unit]
+Description=Your Description
+
+[Service]
+WorkingDirectory=/root/project/fh-deploy/droplet
+Environment="PATH=/root/project/env/bin"
+ExecStart=/root/project/env/bin/gunicorn -w 4 -k uvicorn.workers.UvicornWorker main:app
+
+[Install]
+WantedBy=multi-user.target
+```
+
+3. Start the service.
+```commandline
+sudo systemctl start fasthtml.service
+```
+
+And that's it, you should see your web app.  
+
+To see the status of the service, run `sudo systemctl status fasthtml.service`

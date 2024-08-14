@@ -1,4 +1,4 @@
-from fasthtml.fastapp import *
+from fasthtml.fastapp import fast_app, Titled, P
 
 app, rt = fast_app()
 
