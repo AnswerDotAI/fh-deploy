@@ -120,7 +120,6 @@ cd project
 python3 -m venv env
 source env/bin/activate
 git clone https://github.com/AnswerDotAI/fh-deploy.git
-git clone -b add_droplet https://github.com/fmussari/fh-deploy.git
 cd fh-deploy/droplet
 pip install -r requirements.txt
 ```
