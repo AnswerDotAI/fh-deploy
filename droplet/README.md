@@ -1,6 +1,6 @@
 # Deploying a fastHTML Web App on a DigitalOcean Droplet
 
-This guide details the process of setting up a $4/month Ubuntu Virtual Machine (Droplet) on DigitalOcean to host a fastHTML web application. It leverages the DigitalOcean API to streamline the creation and configuration of SSH keys and the Droplet.
+This guide details the process of setting up a $4/month Ubuntu Virtual Machine (Droplet) on DigitalOcean to host a fastHTML web application. It leverages the DigitalOcean API to streamline the creation and configuration of SSH keys and the Droplet itself.
 
 ### References
 - [How to Create a Droplet](https://docs.digitalocean.com/products/droplets/how-to/create/)
@@ -36,7 +36,7 @@ uvicorn main:app --reload
 
 [API Docs](https://docs.digitalocean.com/reference/api/api-reference/#operation/sshKeys_create)
 
-1. Create a public key.
+1. Create a public key, run `ssh-keygen`.
 2. When asked, save it to `/home/{user}/.ssh/{public_key_filename}`.
 3. Store it as an environment variable `PUBLIC_KEY`.
 
@@ -45,7 +45,7 @@ ssh-keygen
 (...)
 export PUBLIC_KEY=$(cat /home/{user}/.ssh/{public_key_filename}.pub)
 ```
-4. Generate the SSH key using the API endpoint and passing the public key.
+4. Generate the SSH key using the API endpoint and passing the public key just created.
 
 ```curl
 curl -X POST \
@@ -55,7 +55,7 @@ curl -X POST \
   "https://api.digitalocean.com/v2/account/keys" 
 ```
 
-5. After the API call, copy the returned SSH key ID and store it as an environment variable (e.g. run `export SSH_KEY_ID=YOUR_SSH_KEY_ID`).
+5. After the API call, copy the returned SSH key ID and store it as an environment variable (e.g. run `export SSH_KEY_ID=RETURNED_SSH_KEY_ID`).
 
 
 #### Creating a new Droplet
@@ -78,11 +78,11 @@ $ curl -X POST \
   -d '{"name":"fastHTML-Droplet","region":"nyc1","size":"s-1vcpu-512mb-10gb","image":"ubuntu-22-04-x64","ssh_keys":['"$SSH_KEY_ID"']}' \
   "https://api.digitalocean.com/v2/droplets"
 ```
-Go to [droplets](https://cloud.digitalocean.com/droplets) and see the that was just created:
+Go to [droplets](https://cloud.digitalocean.com/droplets) and see that the droplet was just created:
 
 ![](01_droplet.PNG)
 
-2. Save the IP address as an environment variable `export IP_ADDRESS=<DROPLET_IP_ADDRESS>`
+2. Save the IP address as an environment variable `export IP_ADDRESS=DROPLET_IP_ADDRESS`
 
 3. Before attempting to SSH into the Droplet, ensure the security of your public SSH key file by setting its permissions appropriately. 
    
@@ -94,9 +94,9 @@ ssh -i /home/{user}/.ssh/{public_key_filename} root@$IP_ADDRESS
 
 ![](02_droplet.PNG)
 
-#### Configuring the Droplet as a web server
+#### Configuring python in the Droplet
 
-1. After the SSH connection is established, configure the remote server.
+1. After the SSH connection is established, start configuring the remote server.
 
 These commands prepare your Ubuntu system for Python development and web application deployment by updating packages, installing necessary tools and libraries, and setting up a web server (Nginx).
 
@@ -110,7 +110,7 @@ sudo apt install nginx
 ```
 
 - If asked, reboot the server with `sudo reboot`
-- If you navigate to `http://<DROPLET_IP_ADDRESS>` you should see "Welcome to nginx!" page.
+- If you navigate to `http://DROPLET_IP_ADDRESS` you should see "Welcome to nginx!" page.
 
 2. Clone the repository
 
@@ -135,7 +135,7 @@ sudo nano /etc/nginx/sites-available/fasthtml
 2. Add the following text to the file:
 ```
 server {
-    server_name <DROPLET_IP_ADDRESS>;
+    server_name DROPLET_IP_ADDRESS;
     location / {
         include proxy_params;
         proxy_pass http://127.0.0.1:8000;
@@ -143,7 +143,7 @@ server {
 }
 ```
 
-3. Creates a symbolic link in Nginx to enable a the configuration file.
+3. Create a symbolic link in Nginx to enable a the configuration file.
 
 ```commandline
 sudo ln -s /etc/nginx/sites-available/fasthtml /etc/nginx/sites-enabled/
