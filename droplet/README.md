@@ -28,8 +28,8 @@ uvicorn main:app --reload
 
 #### Setting Up DigitalOcean
 
-1. Create a DigitalOcean [account](https://www.digitalocean.com/)
-2. Create a new Personal Access Token [here](https://cloud.digitalocean.com/account/api/tokens)
+1. Create a DigitalOcean [account](https://www.digitalocean.com/).
+2. Create a new Personal Access Token [here](https://cloud.digitalocean.com/account/api/tokens). Select **Custom Scopes**, and only `ssh_key` and `droplet` scopes are needed.
 3. Create a `DIGITALOCEAN_TOKEN` environment variable (e.g. run `export DIGITALOCEAN_TOKEN=YOUR_API_TOKEN`).
 
 #### Create an SSH key
@@ -37,7 +37,7 @@ uvicorn main:app --reload
 [API Docs](https://docs.digitalocean.com/reference/api/api-reference/#operation/sshKeys_create)
 
 1. Create a public key, run `ssh-keygen`.
-2. When asked, save it to `/home/{user}/.ssh/{public_key_filename}`.
+2. When asked, select a `public_key_filename` and save it to `/home/{user}/.ssh/{public_key_filename}`.
 3. Store it as an environment variable `PUBLIC_KEY`.
 
 ```commandline
@@ -72,7 +72,7 @@ The $4/month Droplet will have the following specifications:
 - OS: `Ubuntu 22.04 (LTS) x64`
 
 ```curl
-$ curl -X POST \
+curl -X POST \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer $DIGITALOCEAN_TOKEN" \
   -d '{"name":"fastHTML-Droplet","region":"nyc1","size":"s-1vcpu-512mb-10gb","image":"ubuntu-22-04-x64","ssh_keys":['"$SSH_KEY_ID"']}' \
@@ -90,6 +90,7 @@ Go to [droplets](https://cloud.digitalocean.com/droplets) and see that the dropl
 chmod 600 /home/{user}/.ssh/{public_key_filename}.pub
 ssh -i /home/{user}/.ssh/{public_key_filename} root@$IP_ADDRESS
 ```
+
 4. If everything has been configured correctly, you should be able to connect successfully.
 
 ![](02_droplet.PNG)
@@ -112,7 +113,9 @@ sudo apt install nginx
 - If asked, reboot the server with `sudo reboot`
 - If you navigate to `http://DROPLET_IP_ADDRESS` you should see "Welcome to nginx!" page.
 
-2. Clone the repository
+![](04_nginx.PNG)
+
+1. Clone the repository
 
 ```commandline
 mkdir project
@@ -120,6 +123,7 @@ cd project
 python3 -m venv env
 source env/bin/activate
 git clone https://github.com/AnswerDotAI/fh-deploy.git
+(git clone -b add_droplet https://github.com/fmussari/fh-deploy.git)
 cd fh-deploy/droplet
 pip install -r requirements.txt
 ```
@@ -149,9 +153,14 @@ server {
 sudo ln -s /etc/nginx/sites-available/fasthtml /etc/nginx/sites-enabled/
 ```
 
-To see the status of Nginx server run `systemctl status nginx.service`
+4. Restart Nginx and the check its status.
+```commandline
+sudo systemctl restart nginx.service
+systemctl status nginx.service
+```
 
-#### Install Gunicorn and test if it works
+
+#### Install Gunicorn
 ```commandline
 pip install gunicorn
 gunicorn -w 4 -k uvicorn.workers.UvicornWorker main:app
@@ -190,3 +199,27 @@ sudo systemctl start fasthtml.service
 And that's it, you should see your web app.  
 
 To see the status of the service, run `sudo systemctl status fasthtml.service`
+
+#### Destroying the Droplet
+
+1. List droplets and copy the id.
+
+```curl
+curl -X GET \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer $DIGITALOCEAN_TOKEN" \
+  "https://api.digitalocean.com/v2/droplets"
+```
+
+```
+export DROPLET_ID=YOUR_DROPLET_ID
+```
+
+2. Delete droplet.
+
+```curl
+curl -X DELETE \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer $DIGITALOCEAN_TOKEN" \
+  "https://api.digitalocean.com/v2/droplets/$DROPLET_ID"
+```
