@@ -36,27 +36,33 @@ uvicorn main:app --reload
 
 [API Docs](https://docs.digitalocean.com/reference/api/api-reference/#operation/sshKeys_create)
 
-1. Create a public key, run `ssh-keygen`.
-2. When asked, select a `public_key_filename` and save it to `/home/{user}/.ssh/{public_key_filename}`.
-3. Store it as an environment variable `PUBLIC_KEY`.
+1. Generate a new SSH key pair, save them in the specified path amd file, adding a passphrase.
 
 ```commandline
-ssh-keygen
-(...)
-export PUBLIC_KEY=$(cat /home/{user}/.ssh/{public_key_filename}.pub)
+ssh-keygen -f ~/.ssh/YOUR_KEY_FILE -N YOUR_PASSPHRASE
 ```
-4. Generate the SSH key using the API endpoint and passing the public key just created.
+
+2. Store the public key in an environment variable `PUBLIC_KEY`.
+
+```commandline
+export PUBLIC_KEY=$(cat ~/.ssh/YOUR_KEY_FILE.pub)
+```
+
+3. Generate the SSH key using the API endpoint and passing the public key that was just created.
 
 ```curl
 curl -X POST \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer $DIGITALOCEAN_TOKEN" \
-  -d '{"name":"fastHTML SSH Public Key","public_key":"'"$PUBLIC_KEY"'"}' \
+  -d '{"name":"fastHTML SSH Key","public_key":"'"$PUBLIC_KEY"'"}' \
   "https://api.digitalocean.com/v2/account/keys" 
 ```
 
-5. After the API call, copy the returned SSH key ID and store it as an environment variable (e.g. run `export SSH_KEY_ID=RETURNED_SSH_KEY_ID`).
+4. After the API call, copy the SSH key ID from the response and store it as an environment variable.
 
+```commandline
+export SSH_KEY_ID=RETURNED_SSH_KEY_ID
+```
 
 #### Creating a new Droplet
 
@@ -88,12 +94,39 @@ Go to [droplets](https://cloud.digitalocean.com/droplets) and see that the dropl
    
 ```commandline
 chmod 600 /home/{user}/.ssh/{public_key_filename}.pub
-ssh -i /home/{user}/.ssh/{public_key_filename} root@$IP_ADDRESS
+ssh -i ~/.ssh/YOUR_KEY_FILE root@$IP_ADDRESS
 ```
 
-4. If everything has been configured correctly, you should be able to connect successfully.
+4. If everything has been configured correctly, you should now be connected into the Droplet.
 
 ![](02_droplet.PNG)
+
+#### Adding a User
+
+Run the given commands to achieve the following:
+
+1. Creates a new user account with the username, 
+2. Adds the new user to the sudo group, granting them the ability to run commands with administrative privileges.
+3. Copies the entire contents of the root user's SSH directory (/root/.ssh) to the new user's home directory.
+4. Changes the ownership of the copied SSH directory and its contents to the new user.
+5. Disconnect from the remote server.
+  
+```commandline
+adduser YOUR_USERNAME
+adduser YOUR_USERNAME sudo
+cp -Rfv /root/.ssh /home/YOUR_USERNAME/
+chown -Rfv YOUR_USERNAME:YOUR_USERNAME /home/YOUR_USERNAME/.ssh
+exit
+```
+
+#### SSH with the new User
+
+```commandline
+ssh -i ~/.ssh/YOUR_KEY_FILE YOUR_USERNAME@$IP_ADDRESS
+```
+You should now be connected into the Droplet, with your new user.
+
+![](05_newuser.PNG)
 
 #### Configuring python in the Droplet
 
@@ -111,7 +144,7 @@ sudo apt install nginx
 ```
 
 - If asked, reboot the server with `sudo reboot`
-- If you navigate to `http://DROPLET_IP_ADDRESS` you should see "Welcome to nginx!" page.
+- Now navigate to `http://IP_ADDRESS`. You should see "Welcome to nginx!" page.
 
 ![](04_nginx.PNG)
 
@@ -123,7 +156,6 @@ cd project
 python3 -m venv env
 source env/bin/activate
 git clone https://github.com/AnswerDotAI/fh-deploy.git
-(git clone -b add_droplet https://github.com/fmussari/fh-deploy.git)
 cd fh-deploy/droplet
 pip install -r requirements.txt
 ```
