@@ -2,13 +2,14 @@
 
 This repo contains deployment guides for the platforms listed below. Each guide contains a "hello world" style project which you'll setup on your local device before deploying it on the platform.
 
-| Platform                               | Deployment Guide                                                         |
-|----------------------------------------|--------------------------------------------------------------------------|
-| [HuggingFace](https://huggingface.co/) | [guide](https://github.com/AnswerDotAI/fh-deploy/tree/main/huggingface)  |
-| [Railway](https://railway.app/)        | [guide](https://github.com/AnswerDotAI/fh-deploy/tree/main/railway)      |
-| [Replit](https://replit.com/)          | [guide](https://github.com/AnswerDotAI/fh-deploy/tree/main/replit)       |
-| [Vercel](https://vercel.com/)          | [guide](https://github.com/AnswerDotAI/fh-deploy/tree/main/vercel)       |
-| [Heroku](https://heroku.com/)          | [guide](https://github.com/AnswerDotAI/fh-deploy/tree/main/heroku)       |
+| Platform                                 | Deployment Guide                                                         |
+|------------------------------------------|--------------------------------------------------------------------------|
+| [HuggingFace](https://huggingface.co/)   | [guide](https://github.com/AnswerDotAI/fh-deploy/tree/main/huggingface)  |
+| [Railway](https://railway.app/)          | [guide](https://github.com/AnswerDotAI/fh-deploy/tree/main/railway)      |
+| [Replit](https://replit.com/)            | [guide](https://github.com/AnswerDotAI/fh-deploy/tree/main/replit)       |
+| [Vercel](https://vercel.com/)            | [guide](https://github.com/AnswerDotAI/fh-deploy/tree/main/vercel)       |
+| [Heroku](https://heroku.com/)            | [guide](https://github.com/AnswerDotAI/fh-deploy/tree/main/heroku)       |
+| [Droplet](https://www.digitalocean.com/products/droplets)          | [guide](https://github.com/AnswerDotAI/fh-deploy/tree/main/droplet)      |
 
 If you would like to add a guide for another platform feel free to fork this repo and submit a PR.
 
