@@ -13,10 +13,6 @@ This guide details the process of setting up a $4/month Ubuntu Virtual Machine (
 Run the commands below in your local machine.
 
 ```commandline
-# Before the PR:
-git clone -b add_droplet https://github.com/fmussari/fh-deploy.git
-
-# After the PR:
 git clone https://github.com/AnswerDotAI/fh-deploy.git
 
 cd fh-deploy/droplet
@@ -90,7 +86,7 @@ curl -X POST \
 ```
 Go to [droplets](https://cloud.digitalocean.com/droplets) and see that the droplet was just created.
 
-![](01_droplet.PNG)
+![](images/01_droplet.PNG)
 
 2. Copy and save the IP address as an environment variable `export IP_ADDRESS=DROPLET_IP_ADDRESS`
 
@@ -103,7 +99,7 @@ ssh -i ~/.ssh/YOUR_KEY_FILE root@$IP_ADDRESS
 
 4. If everything has been configured correctly, you should now be connected to the Droplet.
 
-![](02_droplet.PNG)
+![](images/02_droplet.PNG)
 
 #### Adding a User (Recommended)
 
@@ -132,7 +128,7 @@ ssh -i ~/.ssh/YOUR_KEY_FILE YOUR_USERNAME@$IP_ADDRESS
 ```
 You should now be connected into the Droplet, with your new user.
 
-![](05_newuser.PNG)
+![](images/05_newuser.PNG)
 
 #### Configuring python in the Droplet
 
@@ -152,7 +148,7 @@ sudo apt install nginx
 - If asked, reboot the server with `sudo reboot`
 - Now, if you navigate to `http://IP_ADDRESS`, the "Welcome to nginx!" page must be shown.
 
-![](04_nginx.PNG)
+![](images/04_nginx.PNG)
 
 #### Setup the Web App
 
@@ -163,13 +159,7 @@ mkdir project
 cd project
 python3 -m venv env
 source env/bin/activate
-
-# Before the PR:
-git clone -b add_droplet https://github.com/fmussari/fh-deploy.git
-
-# After the PR (example):
 git clone https://github.com/AnswerDotAI/fh-deploy.git
-
 cd fh-deploy/droplet
 pip install -r requirements.txt
 ```
@@ -219,7 +209,7 @@ gunicorn -w 4 -k uvicorn.workers.UvicornWorker main:app
 ```
 You should now see:
 
-![](03_web.PNG)
+![](images/03_web.PNG)
 
 #### Run Gunicorn as a service
 
