@@ -2,6 +2,7 @@
 
 This repo contains deployment guides for the platforms listed below. Each guide contains a "hello world" style project which you'll setup on your local device before deploying it on the platform.
 
+
 | Platform                               | Deployment Guide                                                        |
 | -------------------------------------- | ----------------------------------------------------------------------- |
 | [HuggingFace](https://huggingface.co/) | [guide](https://github.com/AnswerDotAI/fh-deploy/tree/main/huggingface) |
@@ -10,6 +11,7 @@ This repo contains deployment guides for the platforms listed below. Each guide 
 | [Vercel](https://vercel.com/)          | [guide](https://github.com/AnswerDotAI/fh-deploy/tree/main/vercel)      |
 | [Heroku](https://heroku.com/)          | [guide](https://github.com/AnswerDotAI/fh-deploy/tree/main/heroku)      |
 | [Fly.io](https://fly.io/)              | [guide](https://github.com/AnswerDotAI/fh-deploy/tree/main/fly)         |
+| [Coolify](https://coolify.io/)         | [guide](https://github.com/AnswerDotAI/fh-deploy/tree/main/coolify)     |
 
 If you would like to add a guide for another platform feel free to fork this repo and submit a PR.
 
