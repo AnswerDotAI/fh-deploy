@@ -1,5 +1,8 @@
 # Run FastHTML on your Digital Ocean droplet
 
+> If you don't need SSL and extra bells and whistles or do not want to use Docker, check out [this guide](https://github.com/AnswerDotAI/fh-deploy/tree/main/droplet)
+
+
 What's included:
 
 - SQLite database
