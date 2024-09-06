@@ -9,7 +9,7 @@ This repo contains deployment guides for the platforms listed below. Each guide 
 | [Replit](https://replit.com/)            | [guide](https://github.com/AnswerDotAI/fh-deploy/tree/main/replit)       |
 | [Vercel](https://vercel.com/)            | [guide](https://github.com/AnswerDotAI/fh-deploy/tree/main/vercel)       |
 | [Heroku](https://heroku.com/)            | [guide](https://github.com/AnswerDotAI/fh-deploy/tree/main/heroku)       |
-| [Droplet](https://www.digitalocean.com/products/droplets)   | [guide](https://github.com/AnswerDotAI/fh-deploy/tree/main/droplet)      |
+| [Droplet](https://www.digitalocean.com/products/droplets)   | [guide](https://github.com/AnswerDotAI/fh-deploy/tree/main/droplet) [Docker + SSL guide](https://github.com/AnswerDotAI/fh-deploy/tree/main/droplet-ssl-with-ci)     |
 | [Fly.io](https://fly.io/)              | [guide](https://github.com/AnswerDotAI/fh-deploy/tree/main/fly)         |
 | [Coolify](https://coolify.io/)         | [guide](https://github.com/AnswerDotAI/fh-deploy/tree/main/coolify)     |
 

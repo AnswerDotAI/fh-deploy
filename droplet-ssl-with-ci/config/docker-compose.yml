@@ -1,0 +1,27 @@
+services:
+  swag:
+    image: lscr.io/linuxserver/swag:latest
+    container_name: swag
+    cap_add:
+      - NET_ADMIN
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Etc/UTC
+      - URL=${HOST_URL}
+      - VALIDATION=http
+    volumes:
+      - /etc/config/swag:/config
+    ports:
+      - 443:443
+      - 80:80
+    restart: unless-stopped
+  # if you change the name of the service/port, make sure to update nginx/site-confs/defaul.conf
+  app:
+    image: ${REGISTRY}/${IMAGE_NAME}:${IMAGE_TAG}
+    env_file: ${SERVER_APP_DIRECTORY}/.env
+    ports:
+      - 5001:5001
+    volumes:
+      - ${SERVER_APP_DIRECTORY}/data:/code/data
+

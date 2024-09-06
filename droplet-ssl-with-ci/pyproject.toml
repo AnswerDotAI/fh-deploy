@@ -1,0 +1,15 @@
+[tool.poetry]
+name = "fasthtml-digital-ocean"
+version = "0.1.0"
+description = ""
+authors = ["John Smith <john@example.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.10"
+python-fasthtml = "^0.5.1"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

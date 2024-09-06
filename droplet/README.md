@@ -1,5 +1,7 @@
 # Deploying a fastHTML Web App on a DigitalOcean Droplet
 
+> If you need SSL, automated CI setup and Docker support, check out [this  guide](https://github.com/AnswerDotAI/fh-deploy/tree/main/droplet-ssl-with-ci)
+
 This guide details the process of setting up a $4/month Ubuntu Virtual Machine (Droplet) on DigitalOcean to host a fastHTML web application. It leverages the DigitalOcean API to streamline the creation and configuration of SSH keys and the Droplet itself.
 
 ### References
