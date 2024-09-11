@@ -12,6 +12,7 @@ This repo contains deployment guides for the platforms listed below. Each guide 
 | [Droplet](https://www.digitalocean.com/products/droplets)   | [guide](https://github.com/AnswerDotAI/fh-deploy/tree/main/droplet) [Docker + SSL guide](https://github.com/AnswerDotAI/fh-deploy/tree/main/droplet-ssl-with-ci)     |
 | [Fly.io](https://fly.io/)              | [guide](https://github.com/AnswerDotAI/fh-deploy/tree/main/fly)         |
 | [Coolify](https://coolify.io/)         | [guide](https://github.com/AnswerDotAI/fh-deploy/tree/main/coolify)     |
+| [Modal](https://modal.com/)         | [guide](https://github.com/AnswerDotAI/fh-deploy/tree/main/modal)     |
 
 If you would like to add a guide for another platform feel free to fork this repo and submit a PR.
 
