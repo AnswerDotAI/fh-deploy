@@ -1,1 +1,2 @@
+# requirements for the app itself
 python-fasthtml
