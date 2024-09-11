@@ -1,0 +1,3 @@
+# requirements to develop locally and deploy to Modal
+-r requirements.txt
+modal
