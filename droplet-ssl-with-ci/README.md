@@ -54,6 +54,11 @@ rm docker-compose.yml
 docker rm swag
 ```
 
+## Websockets
+
+If you are using websockets, make sure you uncomment relevant sections in `config/nginx/site-confs/default.conf`. These are critical to make sure connection upgrade (from HTTP to websocket) works properly.
+
+
 ## Github 
 
 Configure GH actions to build and deploy the app to your droplet. Start by generating SSH key-pair to access server from GH CI server
