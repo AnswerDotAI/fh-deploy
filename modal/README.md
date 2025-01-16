@@ -15,7 +15,7 @@ Set up a Python environment and then run the commands below on your local machin
 
 ```bash
 git clone https://github.com/AnswerDotAI/fh-deploy.git  # clone the repo
-cd modal  # enter this directory
+cd fh-deploy/modal  # enter this directory
 pip install -r requirements-dev.txt  # install the development dependencies
 ```
 
