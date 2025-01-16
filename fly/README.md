@@ -4,7 +4,7 @@ Run the commands below on your local machine.
 
 ```commandline
 git clone https://github.com/AnswerDotAI/fh-deploy.git
-cd fly
+cd fh-deploy/fly
 pip install -r requirements.txt
 ```
 

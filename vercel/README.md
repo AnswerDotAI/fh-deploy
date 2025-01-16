@@ -2,7 +2,7 @@
 Run the commands below on your local machine.
 ```commandline
 git clone https://github.com/AnswerDotAI/fh-deploy.git
-cd vercel
+cd fh-deploy/vercel
 pip install -r requirements.txt
 ```
 

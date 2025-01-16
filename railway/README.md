@@ -2,7 +2,7 @@
 Run the commands below on your local machine.
 ```commandline
 git clone https://github.com/AnswerDotAI/fh-deploy.git
-cd railway
+cd fh-deploy/railway
 pip install -r requirements.txt
 ```
 
